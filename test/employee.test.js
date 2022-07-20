@@ -1,16 +1,13 @@
+const { number } = require('yargs');
 const Employee = require('../lib/employee.js');
 
 describe('Employee class', () => {
-    it('Collect employee name', () => {
-        expect(new Employee(person.name).getName('Hector'));
+    it('Collect user information for the employee', () => {
+        const person = new Employee('Sufyaan', 90, 'vaidyasufyaan@gmail.com', 'Manager')
+        expect(person.name).toEqual(expect.any(String));
+        expect(person.id).toEqual(expect.any(Number));
+        expect(person.email).toEqual(expect.any(String));
+        expect(person.role).toEqual(expect.any(String)); 
     });
-    it('Collect employee id', () => {
-        expect(new Employee(person.id).getId('1'));
-    });
-    it('Collect employee email', () => {
-        expect(new Employee(person.email).getEmail('hector@fakeemail.com'));
-    });
-    it('Collect employee role', () => {
-        expect(new Employee(person.role).getRole('Employee'));
-    });
+    
 });
