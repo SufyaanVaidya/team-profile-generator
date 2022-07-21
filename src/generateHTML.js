@@ -1,5 +1,6 @@
 const cardArray = [];
-const personCard = cardArray.join('');
+const teamCards = cardArray.join('');
+const inputTeam = createHtmlPage(teamCards);
 function createHtmlPage(teamCards) {
     return `<!DOCTYPE html>
     <html lang="en">
@@ -96,7 +97,8 @@ generateHTML = (data) => {
     }
 
 
-    createHtmlPage(teamCards);
+
+    return inputTeam;
 }
 
 module.exports = generateHTML;

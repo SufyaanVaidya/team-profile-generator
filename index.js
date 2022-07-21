@@ -6,6 +6,9 @@ const Intern = require('./lib/intern');
 const fs = require('fs');
 const inquirer = require('inquirer');
 
+const fileName = './dist/index.html';
+
+
 const teamQuestions = [
     {
         type: 'input',
@@ -16,7 +19,7 @@ const teamQuestions = [
         type: 'list',
         name: 'role',
         message: 'What is the team members role?',
-        choices: ['Manager, Engineer, Intern']
+        choices: ['Manager', 'Engineer', 'Intern']
     },
     {
         type: 'input',
@@ -46,4 +49,59 @@ const teamQuestions = [
         message: 'What is the Interns School?',
         when: (input) => input.role == 'Intern'
     },
+    {
+        type: 'confirm',
+        name: 'confirmAddEmployee',
+        message: 'Would you like to add more team members?',
+        default: false
+    }
 ];
+
+function writeFile(fileName, data) {
+    const htmlFile = generateHTML(data);
+    fs.writeFile(fileName, htmlFile, err => {
+        if (err) {
+            console.log(err)
+        }
+        console.log('Team Profile Generated!')
+    });
+}
+
+const answersArray = [];
+
+function init () {
+    inquirer
+    .prompt(teamQuestions)
+    .then(function(data) {
+        let { name, id, email, role, github, school, officeNumber } = data;
+        let employee;
+        if (role == 'Manager') {
+            employee = new Manager (name, id, email, officeNumber)
+        }
+        if (role == 'Engineer') {
+            employee = new Manager (name, id, email, github)
+        }
+        if (role == 'Intern') {
+            employee = new Manager (name, id, email, school)
+        }
+        answersArray.push(employee);
+
+        confirmMoreEmployees(data);
+
+    })
+
+}
+
+function confirmMoreEmployees (data) {
+    let { confirmAddEmployee } = data;
+    if (confirmAddEmployee) {
+        return init(answersArray)
+    } else {
+        writeFile(fileName, data);
+        return answersArray;
+    }
+}
+
+
+
+init()
