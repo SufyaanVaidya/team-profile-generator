@@ -45,7 +45,7 @@ function generateManager (manager) {
     </div>
     </div>
     `;
-}
+};
 
 function generateEngineer (engineer) {
     return `<div class="col-4 mt-4">
@@ -62,7 +62,41 @@ function generateEngineer (engineer) {
     </div>
     </div>
     `;
+};
+
+function generateIntern (intern) {
+    return `<div class="col-4 mt-4">
+    <div class="card h-100">
+    <div class="card-header">
+        <h3>${intern.name}</h3>
+        <h4>Manager</h4>
+    </div>
+    <div class="card-body">
+        <p class="id">ID- ${intern.id}</p>
+        <p class="email">Email- <a href="mailto:${intern.email}">${intern.email}</a></p>
+        <p class="school">School- ${intern.school}</p>
+    </div>
+    </div>
+    </div>
+    `;
+};
+
+generateHTML = (data) => {
+    for(let i = 0; data.length; i++) {
+        const role = data[i].getRole();
+        if (role == 'Manager') {
+            cardArray.push(generateManager(data[i]));
+        }
+        if (role == 'Engineer') {
+            cardArray.push(generateEngineer(data[i]));
+        }
+        if (role == 'Intern') {
+            cardArray.push(generateIntern(data[i]));
+        }
+    }
+
+
+    createHtmlPage();
 }
 
-
-createHtmlPage();
+module.exports = generateHTML;
