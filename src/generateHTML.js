@@ -1,6 +1,6 @@
 const cardArray = [];
 const personCard = cardArray.join('');
-function createHtmlPage() {
+function createHtmlPage(teamCards) {
     return `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -18,7 +18,7 @@ function createHtmlPage() {
         <main>
         <div class= "container">
         <div class="row justify-content-center" id="employee-cards">
-        ${}
+        ${teamCards}
         </div>
         </div>
         </main>
@@ -96,7 +96,7 @@ generateHTML = (data) => {
     }
 
 
-    createHtmlPage();
+    createHtmlPage(teamCards);
 }
 
 module.exports = generateHTML;
