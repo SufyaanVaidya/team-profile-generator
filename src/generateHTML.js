@@ -18,7 +18,7 @@ function createHtmlPage(teamCards) {
         <main>
         <div class= "container">
         <div class="row justify-content-center" id="employee-cards">
-        /* this allows me to input as many cards as the user inputs to the html */
+        <!-- this allows me to input as many cards as the user inputs to the html -->
         ${teamCards}
         </div>
         </div>
