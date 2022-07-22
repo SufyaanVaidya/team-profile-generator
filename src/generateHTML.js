@@ -1,6 +1,5 @@
-const cardArray = [];
-const teamCards = cardArray.join('');
-const inputTeam = createHtmlPage(teamCards);
+
+
 function createHtmlPage(teamCards) {
     return `<!DOCTYPE html>
     <html lang="en">
@@ -83,7 +82,8 @@ function generateIntern (intern) {
 };
 
 generateHTML = (data) => {
-    for(let i = 0; data.length; i++) {
+    const cardArray = [];
+    for(let i = 0; i < data.length; i++) {
         const role = data[i].getRole();
         if (role == 'Manager') {
             cardArray.push(generateManager(data[i]));
@@ -94,9 +94,12 @@ generateHTML = (data) => {
         if (role == 'Intern') {
             cardArray.push(generateIntern(data[i]));
         }
+        
     }
 
+    const teamCards = cardArray.join('');
 
+    const inputTeam = createHtmlPage(teamCards);
 
     return inputTeam;
 }

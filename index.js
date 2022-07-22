@@ -57,7 +57,7 @@ const teamQuestions = [
     }
 ];
 
-function writeFile(fileName, data) {
+function writeFile(data) {
     const htmlFile = generateHTML(data);
     fs.writeFile(fileName, htmlFile, err => {
         if (err) {
@@ -79,10 +79,10 @@ function init () {
             employee = new Manager (name, id, email, officeNumber)
         }
         if (role == 'Engineer') {
-            employee = new Manager (name, id, email, github)
+            employee = new Engineer (name, id, email, github)
         }
         if (role == 'Intern') {
-            employee = new Manager (name, id, email, school)
+            employee = new Intern (name, id, email, school)
         }
         answersArray.push(employee);
 
@@ -97,8 +97,8 @@ function confirmMoreEmployees (data) {
     if (confirmAddEmployee) {
         return init(answersArray)
     } else {
-        writeFile(fileName, data);
-        return answersArray;
+        writeFile(answersArray);
+        return console.log(answersArray);
     }
 }
 
