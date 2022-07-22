@@ -9,6 +9,7 @@ function createHtmlPage(teamCards) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/c41fea8e9b.js" crossorigin="anonymous"></script>
         <title>Team Profile Page</title>
     </head>
     <body>
@@ -35,7 +36,7 @@ function generateManager (manager) {
     <div class="card h-100">
     <div class="card-header">
         <h3>${manager.name}</h3>
-        <h4>Manager</h4>
+        <h4><i class="fa-solid fa-starship-freighter"></i>Manager</h4>
     </div>
     <div class="card-body">
         <p class="id">ID- ${manager.id}</p>
@@ -52,7 +53,7 @@ function generateEngineer (engineer) {
     <div class="card h-100">
     <div class="card-header">
         <h3>${engineer.name}</h3>
-        <h4>Manager</h4>
+        <h4><i class="fa-solid fa-starfighter"></i>Engineer</h4>
     </div>
     <div class="card-body">
         <p class="id">ID- ${engineer.id}</p>
@@ -69,7 +70,7 @@ function generateIntern (intern) {
     <div class="card h-100">
     <div class="card-header">
         <h3>${intern.name}</h3>
-        <h4>Manager</h4>
+        <h4><i class="fa-solid fa-starfighter-twin-ion-engine"></i>Intern</h4>
     </div>
     <div class="card-body">
         <p class="id">ID- ${intern.id}</p>
@@ -83,20 +84,22 @@ function generateIntern (intern) {
 
 generateHTML = (data) => {
     const cardArray = [];
-    for(let i = 0; i < data.length; i++) {
-        const role = data[i].getRole();
-        if (role == 'Manager') {
-            cardArray.push(generateManager(data[i]));
-        }
-        if (role == 'Engineer') {
-            cardArray.push(generateEngineer(data[i]));
-        }
-        if (role == 'Intern') {
-            cardArray.push(generateIntern(data[i]));
-        }
+    const foo = (e) => {
+        
+            const role = e.getRole();
+            if (role == 'Manager') {
+                cardArray.push(generateManager(e));
+            }
+            if (role == 'Engineer') {
+                cardArray.push(generateEngineer(e));
+            }
+            if (role == 'Intern') {
+                cardArray.push(generateIntern(e));
+            }
+            
         
     }
-
+    data.map((elem)=> foo(elem))
     const teamCards = cardArray.join('');
 
     const inputTeam = createHtmlPage(teamCards);
