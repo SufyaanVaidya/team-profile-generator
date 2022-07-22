@@ -1,5 +1,4 @@
-
-
+// this function creates the base of the html
 function createHtmlPage(teamCards) {
     return `<!DOCTYPE html>
     <html lang="en">
@@ -19,6 +18,7 @@ function createHtmlPage(teamCards) {
         <main>
         <div class= "container">
         <div class="row justify-content-center" id="employee-cards">
+        /* this allows me to input as many cards as the user inputs to the html */
         ${teamCards}
         </div>
         </div>
@@ -31,6 +31,7 @@ function createHtmlPage(teamCards) {
     `
 }
 
+// this generates the card specifically for the manager
 function generateManager (manager) {
     return `<div class="col-4 mt-4">
     <div class="card h-100">
@@ -48,6 +49,7 @@ function generateManager (manager) {
     `;
 };
 
+// this generates the card specifically for the engineer
 function generateEngineer (engineer) {
     return `<div class="col-4 mt-4">
     <div class="card h-100">
@@ -65,6 +67,7 @@ function generateEngineer (engineer) {
     `;
 };
 
+// this generates the card specifically for the intern
 function generateIntern (intern) {
     return `<div class="col-4 mt-4">
     <div class="card h-100">
@@ -82,6 +85,7 @@ function generateIntern (intern) {
     `;
 };
 
+// this function if it takes in certain data AKA role in this case it will add it to an array to populate in the created html base
 generateHTML = (data) => {
     const cardArray = [];
     const foo = (e) => {
@@ -107,4 +111,5 @@ generateHTML = (data) => {
     return inputTeam;
 }
 
+// this is the function i exported and called on in a different file
 module.exports = generateHTML;

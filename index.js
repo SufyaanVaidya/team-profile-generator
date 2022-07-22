@@ -1,14 +1,19 @@
+// these are the called on/required js files
 const generateHTML = require('./src/generateHTML.js');
 const Manager = require('./lib/manager.js');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 
+// these are my node modules
 const fs = require('fs');
 const inquirer = require('inquirer');
 
+// this is the location i want to generate html defined globally
 const fileName = './dist/index.html';
+// this is the array that holds the user input
 const answersArray = [];
 
+// this is the managers questions array
 const managerQuestions = [
     {
         type: 'input',
@@ -73,6 +78,7 @@ const managerQuestions = [
     }
 ];
 
+// this is the function to write the html file with the data thats passed through it
 function writeFile(data) {
     const htmlFile = generateHTML(data);
     fs.writeFile(fileName, htmlFile, err => {
@@ -84,7 +90,7 @@ function writeFile(data) {
 }
 
 
-
+// this function is what happens when the index.js test is initiated
 function init () {
     inquirer
     .prompt(managerQuestions)
@@ -108,6 +114,7 @@ function init () {
 
 }
 
+// this is the employee questions array 
 const employeeAddQuestions = [
     {
         type: 'input',
@@ -179,6 +186,7 @@ const employeeAddQuestions = [
     }
 ]
 
+// this function is for when you answer if you want to keep adding members to your profile
 function initMoreEmployees () {
     inquirer
     .prompt(employeeAddQuestions)
@@ -198,6 +206,7 @@ function initMoreEmployees () {
     })
 }
 
+// this function is for your answer on if you want to add more team members
 function confirmMoreEmployees (data) {
     let { confirmAddEmployee } = data;
     if (confirmAddEmployee) {
@@ -209,5 +218,5 @@ function confirmMoreEmployees (data) {
 }
 
 
-
+// this starts the app when the test is ran
 init()
