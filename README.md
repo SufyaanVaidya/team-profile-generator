@@ -43,14 +43,20 @@
 
 
 # Usage
- - Please refer to the below gif -
+ - Please refer to the below gifs 
 
-  ![](./assets/images/usage.gif)
+- This gif was a part of the test but is reptative for the rest of the steps
 
-  ![](./assets/images/codeone.PNG)
 
-  ![](./assets/images/codetwo.PNG)
+![](./assets/images%26gif/functionality%20prompt.gif)
 
+![](./assets/images%26gif/html%20gif.gif)
+
+![](./assets/images%26gif/generate%20html.PNG)
+
+![](./assets/images%26gif/indexjs%201.PNG)
+
+![](./assets/images%26gif/indexjs%202.PNG)
 
 
 
